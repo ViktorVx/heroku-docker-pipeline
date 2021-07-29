@@ -1,5 +1,7 @@
 pipeline {
-    agent java-11-docker-worker
+    agent {
+        label java-11-docker-worker
+    }
     stages {
         stage("Hello world stage") {
             steps {
