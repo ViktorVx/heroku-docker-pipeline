@@ -11,7 +11,7 @@ pipeline {
         }
         stage("Package jar") {
             steps {
-                sh "ls -la"
+                docker.build("myImage:latest", " .")
             }
         }
     }
