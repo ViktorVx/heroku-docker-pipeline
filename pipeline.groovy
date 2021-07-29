@@ -5,7 +5,8 @@ pipeline {
     stages {
         stage("Clone repository") {
             steps {
-                git url: 'https://github.com/ViktorVx/wordsFromWordBruteForce.git'
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-user-github', url: 'https://github.com/ViktorVx/wordsFromWordBruteForce.git']]])
+
             }
         }
         stage("Package jar") {
