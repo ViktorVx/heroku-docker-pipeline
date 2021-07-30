@@ -11,7 +11,9 @@ pipeline {
         }
         stage("Package jar") {
             steps {
-                docker.build("myImage:latest", " .")
+                script {
+                    docker.build("myImage:latest", " .")
+                }
             }
         }
     }
