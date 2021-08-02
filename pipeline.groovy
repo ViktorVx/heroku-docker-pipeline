@@ -12,6 +12,7 @@ pipeline {
         stage("Docker build") {
             steps {
                 script {
+                    sh(script:'whoami')
                     sh(script:'docker version')
                 }
             }
