@@ -12,6 +12,7 @@ pipeline {
         stage("Docker build") {
             steps {
                 script {
+                    sh(script:'sleep 5m')
                     sh(script:'docker version')
                 }
             }
