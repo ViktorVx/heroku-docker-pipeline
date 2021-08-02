@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script {
                     sh(script:'whoami')
+                    sh(script:'ls -la /var/run/docker.sock')
                     sh(script:'docker version')
                 }
             }
