@@ -14,7 +14,7 @@ pipeline {
                 script {
                     sh(script:'whoami')
                     sh(script:'ls -la /var/run/docker.sock')
-                    sh(script:'sudo docker version')
+                    sh(script:'docker version')
                 }
             }
         }
