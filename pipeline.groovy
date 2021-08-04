@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker version')
-                    docker.build("my-image:latest")
+                    docker.build("viktorvx/words-from-word-brute-force:latest")
                 }
             }
         }
