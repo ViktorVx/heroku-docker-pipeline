@@ -13,7 +13,8 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker version')
-                    docker.build("${DOCKER_REPO_NAME}:latest")
+                    def image = docker.build("${DOCKER_REPO_NAME}:latest")
+                    image.push()
                 }
             }
         }
