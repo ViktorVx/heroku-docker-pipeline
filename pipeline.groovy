@@ -4,8 +4,10 @@ pipeline {
     }
     stages {
         stage("Check environment") {
-            sh(script:'docker version')
-            sh(script:'heroku -v')
+            steps {
+                sh(script:'docker version')
+                sh(script:'heroku -v')
+            }
         }
         stage("Clone app repo") {
             steps {
