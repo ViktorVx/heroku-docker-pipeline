@@ -3,17 +3,19 @@ pipeline {
         label 'java-11-docker-worker'
     }
     stages {
-        stage("Clone repository") {
+        stage("Check environment") {
+            sh(script:'docker version')
+            sh(script:'heroku -v')
+        }
+        stage("Clone app repo") {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'jenkins-user-github', url: 'https://github.com/ViktorVx/wordsFromWordBruteForce.git']]])
 
             }
         }
-        stage("Docker build") {
+        stage("Docker build&push to Dockerhub") {
             steps {
                 script {
-                    sh(script:'docker version')
-                    sh(script:'heroku -v')
                     docker.withRegistry('https://registry-1.docker.io', 'dockerhub-creds') {
                         def image = docker.build("${DOCKER_REPO_NAME}:latest")
                         image.push()
