@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker version')
-                    docker.build("myImage:latest")
+                    docker.build("my-image:latest")
                 }
             }
         }
