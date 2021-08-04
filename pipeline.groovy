@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker version')
-                    docker.withRegistry('https://hub.docker.com/', 'dockerhub-creds') {
+                    docker.withRegistry('registry-1.docker.io', 'dockerhub-creds') {
                         def image = docker.build("${DOCKER_REPO_NAME}:latest")
                         image.push()
                     }
