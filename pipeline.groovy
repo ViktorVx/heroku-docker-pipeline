@@ -13,6 +13,7 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker version')
+                    sh(script:'heroku -v')
                     docker.withRegistry('https://registry-1.docker.io', 'dockerhub-creds') {
                         def image = docker.build("${DOCKER_REPO_NAME}:latest")
                         image.push()
