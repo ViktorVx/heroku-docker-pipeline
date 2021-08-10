@@ -29,6 +29,8 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker build -t registry.heroku.com/wfwbf-docker/web .')
+                    sh(script:'echo ${HEROKU_USER_NAME}')
+                    sh(script:'echo ${HEROKU_TOKEN}')
                     sh(script:'docker login --username=${HEROKU_USER_NAME} --password=${HEROKU_TOKEN} registry.heroku.com')
                     sh(script:'docker push registry.heroku.com/wfwbf-docker/web')
                 }
