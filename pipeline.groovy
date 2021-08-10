@@ -25,5 +25,12 @@ pipeline {
                 }
             }
         }
+        stage("Deploy to Heroku") {
+            steps {
+                script {
+                    sh(script:'docker build -t registry.heroku.com/wfwbf-docker/web .')
+                }
+            }
+        }
     }
 }
