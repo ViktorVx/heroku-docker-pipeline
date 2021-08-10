@@ -29,6 +29,7 @@ pipeline {
             steps {
                 script {
                     sh(script:'docker build -t registry.heroku.com/wfwbf-docker/web .')
+                    sh(script:'docker push registry.heroku.com/wfwbf-docker/web')
                 }
             }
         }
