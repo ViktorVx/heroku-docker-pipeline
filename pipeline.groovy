@@ -32,11 +32,11 @@ pipeline {
         stage("Deploy to Heroku") {
             steps {
                 script {
-                    sh(script:'docker build -t registry.heroku.com/wfwbf-docker/web .')
+                    sh(script:'docker build -t ${HEROKU_APP} .')
                     withCredentials([string(credentialsId: 'HEROKU_TOKEN', variable: 'SECRET')]) {
                         sh(script:'docker login --username=${HEROKU_USER_NAME} --password=${SECRET} registry.heroku.com')
                     }
-                    sh(script:'docker push registry.heroku.com/wfwbf-docker/web')
+                    sh(script:'docker push ${HEROKU_APP}')
                 }
             }
         }
