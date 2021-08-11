@@ -36,9 +36,9 @@ pipeline {
 
                     withCredentials([string(credentialsId: 'HEROKU_API_TOKEN', variable: 'SECRET2')]) {
                         sh(script:'export HEROKU_API_KEY=${SECRET2}')
+                        sh(script:'heroku container:login')
+                        sh(script:'heroku container:release web --app ${HEROKU_APP}')
                     }
-                    sh(script:'heroku container:login')
-                    sh(script:'heroku container:release web --app ${HEROKU_APP}')
                 }
             }
         }
