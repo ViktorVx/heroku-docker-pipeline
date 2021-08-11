@@ -38,6 +38,7 @@ pipeline {
                         sh(script:'export HEROKU_API_KEY=${SECRET2}')
 //                        sh(script:'HEROKU_API_KEY=${SECRET2} heroku login')
 //                        sh(script:'heroku login')
+                        sh(script:'cat  ~/.netrc')
                         sh(script:'heroku container:login')
 
                         sh(script:'heroku container:release web --app ${HEROKU_APP}')
