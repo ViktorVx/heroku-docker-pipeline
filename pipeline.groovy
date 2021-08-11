@@ -34,8 +34,8 @@ pipeline {
                     }
                     sh(script:'docker push registry.heroku.com/${HEROKU_APP}/web')
 
-                    withCredentials([string(credentialsId: 'HEROKU_API_TOKEN', variable: 'SECRET')]) {
-                        sh(script:'export HEROKU_API_KEY=${SECRET}')
+                    withCredentials([string(credentialsId: 'HEROKU_API_TOKEN', variable: 'SECRET2')]) {
+                        sh(script:'export HEROKU_API_KEY=${SECRET2}')
                     }
                     sh(script:'heroku container:release web --app ${HEROKU_APP}')
                 }
