@@ -31,9 +31,12 @@ pipeline {
                     sh(script:'docker build -t registry.heroku.com/${HEROKU_APP}/web .')
                     withCredentials([string(credentialsId: 'HEROKU_TOKEN', variable: 'SECRET')]) {
                         sh(script:'docker login --username=${HEROKU_USER_NAME} --password=${SECRET} registry.heroku.com')
-                        sh(script:'export HEROKU_API_KEY=${SECRET}')
                     }
                     sh(script:'docker push registry.heroku.com/${HEROKU_APP}/web')
+
+                    withCredentials([string(credentialsId: 'HEROKU_API_TOKEN', variable: 'SECRET')]) {
+                        sh(script:'export HEROKU_API_KEY=${SECRET}')
+                    }
                     sh(script:'heroku container:release web --app ${HEROKU_APP}')
                 }
             }
