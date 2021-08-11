@@ -38,7 +38,7 @@ pipeline {
                         sh(script:'export HEROKU_API_KEY=${SECRET2}')
                         sh(script:'echo $HEROKU_API_KEY')
 
-                        sh(script:'export HEROKU_API_KEY2=1234')
+                        sh(script:'export HEROKU_API_KEY2="1234"')
                         sh(script:'echo $HEROKU_API_KEY2')
 //                        sh(script:'HEROKU_API_KEY=${SECRET2} heroku login')
 //                        sh(script:'heroku login')
